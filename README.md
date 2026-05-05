@@ -2,6 +2,10 @@
 
 A modular neural network library based on parameterised morphisms and bidirectional Store composition.
 
+based on:
+
+https://cybercat.institute/2024/04/15/neural-network-first-principles/
+
 ## Overview
 
 `mnet` provides a clean, composable approach to neural networks using:
