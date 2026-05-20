@@ -2,8 +2,3 @@ packages:
   mnet.cabal
 
 write-ghc-environment-files: always
-
-allow-newer:
-  *:base,
-  *:template-haskell,
-  *:transformers
