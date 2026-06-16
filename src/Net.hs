@@ -126,7 +126,7 @@ mseLoss ::
 mseLoss y target =
   let diff = y - target
       n = fromIntegral (A.size y)
-      loss = sum (fmap (^ (2::Int)) diff) / n
+      loss = sum (fmap (^ (2 :: Int)) diff) / n
       grad = fmap (* (2 / n)) diff
    in (loss, grad)
 
