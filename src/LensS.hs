@@ -1,4 +1,4 @@
-{-# LANGUAGE TupleSections #-}
+
 
 module LensS
   ( LensS (..),
@@ -26,7 +26,7 @@ pos :: Store b a -> b
 pos (Store _ b) = b
 
 peek :: Store b a -> b -> a
-peek (Store f _) b = f b
+peek (Store f _) = f
 
 -- | @LensS a b = a -> Store b a@
 newtype LensS a b = LensS {runLensS :: a -> Store b a}
@@ -51,4 +51,4 @@ getS (LensS f) a = pos (f a)
 
 -- | Set the focus.
 setS :: LensS a b -> a -> b -> a
-setS (LensS f) a b = peek (f a) b
+setS (LensS f) a = peek (f a)

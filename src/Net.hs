@@ -47,14 +47,14 @@ model :: (Num a, Ord a) => Para (NetParams a) (A.Array a) (A.Array a)
 model = bias2 . linear2 . relu1 . bias1 . linear1
 
 forward :: (Num a, Ord a) => NetParams a -> A.Array a -> A.Array a
-forward p x = runPara model p x
+forward = runPara model
 
 linear1B ::
   (Num a, Fractional a) =>
   Para (NetParams a) (A.Array a) (Store (A.Array a) (A.Array a))
 linear1B = Para $ \(p, x) ->
   Store
-    (\dy -> A.mult (A.transpose (w1 p)) dy)
+    (A.mult (A.transpose (w1 p)))
     (A.mult (w1 p) x)
 
 bias1B ::
@@ -68,7 +68,7 @@ relu1B ::
   Para (NetParams a) (A.Array a) (Store (A.Array a) (A.Array a))
 relu1B = Para $ \(_, x) ->
   Store
-    (\dy -> A.zipWith (\xi dyi -> if xi > 0 then dyi else 0) x dy)
+    (A.zipWith (\xi dyi -> if xi > 0 then dyi else 0) x)
     (fmap (max 0) x)
 
 andThen ::
@@ -109,7 +109,7 @@ linear1BP = Para $ \(p, x) ->
   Store
     ( \_ ->
         BackPass
-          (\dy' -> A.mult (A.transpose (w1 p)) dy')
+          (A.mult (A.transpose (w1 p)))
           ( \dy' lr params ->
               params
                 { w1 = w1 params - fmap (lr *) (A.expand (*) dy' x),
@@ -170,7 +170,7 @@ relu1BP = Para $ \(_, x) ->
   Store
     ( \_ ->
         BackPass
-          (\dy' -> A.zipWith (\xi dyi -> if xi > 0 then dyi else 0) x dy')
+          (A.zipWith (\xi dyi -> if xi > 0 then dyi else 0) x)
           (\_ _ params -> params)
     )
     (fmap (max 0) x)
@@ -185,7 +185,7 @@ linear2BP = Para $ \(p, x) ->
   Store
     ( \_ ->
         BackPass
-          (\dy' -> A.mult (A.transpose (w2 p)) dy')
+          (A.mult (A.transpose (w2 p)))
           ( \dy' lr params ->
               params
                 { w2 = w2 params - fmap (lr *) (A.expand (*) dy' x),
@@ -228,7 +228,7 @@ andThenBP f g = Para $ \(p, a) ->
                 let bp_b = mkBP_b dc
                     bp_a = mkBP_a (inputGrad bp_b dc)
                  in BackPass
-                      (\dc' -> inputGrad bp_a (inputGrad bp_b dc'))
+                      (inputGrad bp_a . inputGrad bp_b)
                       ( \dc' lr params ->
                           paramUpdate
                             bp_a
