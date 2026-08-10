@@ -3,10 +3,10 @@
 
 module Net where
 
+import Circuit.Learn.Para (Para (..), runPara)
 import Control.Category (Category (..))
 import Harpie.Array qualified as A
 import LensS (LensS (..), Store (..), getS, mkLensS, setS)
-import Para (Para (..), runPara)
 import Prelude hiding (id, (.))
 
 data NetParams a = NetParams

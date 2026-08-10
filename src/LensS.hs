@@ -1,5 +1,3 @@
-
-
 module LensS
   ( LensS (..),
     Store (..),
@@ -9,10 +7,10 @@ module LensS
   )
 where
 
+import Circuit.Learn.Para (Para (..))
 import Control.Arrow (Arrow (..))
 import Control.Category (Category (..))
 import Data.Profunctor (Profunctor (..), Strong (..))
-import Para (Para (..))
 import Prelude hiding (id, (.))
 import Prelude qualified
 

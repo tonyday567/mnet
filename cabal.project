@@ -1,6 +1,7 @@
 packages:
   mnet.cabal
   ../circuits/circuits.cabal
+  ../circuits-learn/circuits-learn.cabal
   ../circuits-ad/circuits-ad.cabal
   ../string-diagrams/string-diagrams.cabal
   ../harpie/harpie.cabal
