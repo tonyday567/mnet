@@ -17,7 +17,7 @@ import Circuit.Poly
     Mono,
     lens,
   )
-import Circuit.Poly.Process (Coalgebra (..))
+import Circuit.ChannelPoly (Coalgebra (..))
 import Harpie.Array (Array)
 import NetCoalgebra
   ( NetParams (..),
