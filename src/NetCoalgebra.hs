@@ -9,7 +9,7 @@
 --
 -- * Linear maps use 'Circuit.Mat.Dense'.
 -- * Gradients are produced via 'Circuit.AD.Param.DiffP' (reverse mode).
--- * Parameter updates run through 'Circuit.Learn.Adam' 'Process'es.
+-- * Parameter updates run through 'Circuit.Learn.Ephemeral.sgd' 'Progress'.
 -- * The whole training step is packaged as a 'Circuit.ChannelPoly.Coalgebra'
 --   whose output direction is a learning-rate scalar.
 --
