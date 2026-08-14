@@ -8,7 +8,7 @@
 -- circuits ecosystem.
 --
 -- * Linear maps use 'Circuit.Mat.Dense'.
--- * Gradients are produced via 'Circuit.AD.Param.DiffP' (reverse mode).
+-- * Gradients are produced via 'Circuit.Diff.Param.DiffP' (reverse mode).
 -- * Parameter updates run through 'Circuit.Learn.Ephemeral.sgd' 'Progress'.
 -- * The whole training step is packaged as a 'Circuit.ChannelPoly.Coalgebra'
 --   whose output direction is a learning-rate scalar.
@@ -46,7 +46,7 @@ module NetCoalgebra
   )
 where
 
-import Circuit.AD.Param (DiffP (..), runDiffP)
+import Circuit.Diff.Param (DiffP (..), runDiffP)
 import Circuit.ChannelPoly (Coalgebra (..))
 import Circuit.Learn.Ephemeral (Progress (..), sgd)
 import Circuit.Mat.Dense (Matrix (..), matTimes, matVec)

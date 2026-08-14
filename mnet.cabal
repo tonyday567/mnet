@@ -4,7 +4,7 @@ version:            0.1.0.0
 synopsis:           Modular neural network as a circuits-ecosystem client
 description:
   A small neural-network library rebuilt on the circuits ecosystem:
-  circuits-mat for linear algebra, circuits-ad for reverse-mode gradients,
+  circuits-mat for linear algebra, circuits-diff for reverse-mode gradients,
   circuits-learn for optimiser processes, and Circuit.Poly for the
   coalgebra view of training.
 
@@ -32,7 +32,7 @@ library
   build-depends:
     base >=4.18 && <5,
     circuits,
-    circuits-ad,
+    circuits-diff,
     circuits-learn,
     circuits-mat,
     harpie >=0.3 && <0.4,
@@ -57,7 +57,7 @@ test-suite oracle
   build-depends:
     base >=4.18 && <5,
     circuits,
-    circuits-ad,
+    circuits-diff,
     circuits-mat,
     harpie >=0.3 && <0.4,
     mnet,
