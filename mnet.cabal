@@ -1,8 +1,13 @@
 cabal-version:      3.0
 name:               mnet
 version:            0.1.0.0
-synopsis:           Modular neural network with bidirectional Store morphisms
-description:        A neural network library based on Para, LensS, and Store for composable forward and backward passes.
+synopsis:           Modular neural network as a circuits-ecosystem client
+description:
+  A small neural-network library rebuilt on the circuits ecosystem:
+  circuits-mat for linear algebra, circuits-ad for reverse-mode gradients,
+  circuits-learn for optimiser processes, and Circuit.Poly for the
+  coalgebra view of training.
+
 license:            BSD-3-Clause
 author:             tonyday567
 maintainer:         tonyday567@gmail.com
@@ -21,19 +26,26 @@ library
   import:           warnings
   exposed-modules:
     Net
-    LensS
     NetCoalgebra
-    NetCoalgebra.Poly
   hs-source-dirs:   src
   default-language: GHC2024
   build-depends:
     base >=4.18 && <5,
     circuits,
+    circuits-ad,
     circuits-learn,
-    string-diagrams,
-    profunctors >=5.6.3 && <6,
-    harpie >=0.1 && <1,
+    circuits-mat,
+    harpie >=0.3 && <0.4,
+    numhask >=0.14 && <0.15,
+    these,
+    vector >=0.12 && <0.14,
   default-extensions:
+    GADTs
+    DataKinds
+    RankNTypes
+    ScopedTypeVariables
+    TypeFamilies
+    TypeOperators
     UnicodeSyntax
 
 test-suite oracle
@@ -44,5 +56,11 @@ test-suite oracle
   default-language: GHC2024
   build-depends:
     base >=4.18 && <5,
-    harpie >=0.1 && <1,
-    mnet
+    circuits,
+    circuits-ad,
+    circuits-mat,
+    harpie >=0.3 && <0.4,
+    mnet,
+    numhask >=0.14 && <0.15,
+    these,
+    vector >=0.12 && <0.14,
