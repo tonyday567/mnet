@@ -11,8 +11,8 @@
 module Main where
 
 import Circuit.Mat.Dense (Matrix (..))
-import Harpie.Array qualified as A
 import Harpie.Array (arrayAs)
+import Harpie.Array qualified as A
 import Net (NetParams (..), netParamsFromArrays)
 import NetCoalgebra
   ( forward,

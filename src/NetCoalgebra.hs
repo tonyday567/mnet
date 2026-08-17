@@ -1,8 +1,8 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE GADTs #-}
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 
 -- | Skip-Para neural network expressed as a polynomial coalgebra over the
 -- circuits ecosystem.
@@ -46,15 +46,14 @@ module NetCoalgebra
   )
 where
 
-import Circuit.Diff.Param (DiffP (..), runDiffP)
 import Circuit.ChannelPoly (Coalgebra (..))
+import Circuit.Diff.Param (DiffP (..), runDiffP)
 import Circuit.Learn.Ephemeral (Progress (..), sgd)
 import Circuit.Mat.Dense (Matrix (..), matTimes, matVec)
 import Circuit.Poly (Eval (..), Mono, lens)
 import Data.Vector.Unboxed qualified as VU
-import Harpie.Array (Array)
+import Harpie.Array (Array, arrayAs)
 import Harpie.Array qualified as A
-import Harpie.Array (arrayAs)
 import Net qualified
 import NumHask.Algebra.Additive (zero)
 import NumHask.Algebra.Multiplicative (one)
@@ -122,7 +121,7 @@ outerProduct dy x =
 
 -- | Rectified linear unit.
 reluArr :: Array Double -> Array Double
-reluArr = fmap (\x -> if x > zero then x else zero)
+reluArr = fmap (\x -> max x zero)
 
 -- | ReLU derivative.
 reluGradArr :: Array Double -> Array Double

@@ -1,5 +1,5 @@
-{-# LANGUAGE NoImplicitPrelude #-}
 {-# LANGUAGE UnicodeSyntax #-}
+{-# LANGUAGE NoImplicitPrelude #-}
 
 -- | Forward-only neural-network layer definitions built on the circuits
 -- ecosystem.
@@ -38,12 +38,11 @@ import Circuit.Mat.Dense (Matrix (..), matVec)
 import Control.Category (Category (..))
 import Data.These (These (..))
 import Data.Vector.Unboxed qualified as VU
-import Harpie.Array (Array)
+import Harpie.Array (Array, arrayAs)
 import Harpie.Array qualified as A
-import Harpie.Array (arrayAs)
 import NumHask.Algebra.Additive (Additive, sum, zero)
 import NumHask.Algebra.Multiplicative (Multiplicative)
-import Prelude hiding (id, (.), sum)
+import Prelude hiding (id, sum, (.))
 
 -- | A 'These'-based boundary distinguishes inference-only, gradient-only,
 -- and combined inference-with-gradient traffic at a layer boundary.
@@ -82,7 +81,7 @@ matVecArr m v = A.array [rows m] (matVec m (arrayAs v))
 
 -- | Rectified linear unit.
 reluArr :: (Ord a, Additive a) => Array a -> Array a
-reluArr = fmap (\x -> if x > zero then x else zero)
+reluArr = fmap (\x -> max x zero)
 
 -- | First linear layer.
 linear1 ::
