@@ -12,3 +12,4 @@ cabal.project.local*
 *.dyn_o
 .hie/
 .stack-work/
+/cabal.project.local*

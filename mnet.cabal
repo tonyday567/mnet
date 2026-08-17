@@ -1,18 +1,18 @@
-cabal-version:      3.0
-name:               mnet
-version:            0.1.0.0
-synopsis:           Modular neural network as a circuits-ecosystem client
+cabal-version: 3.0
+name: mnet
+version: 0.1.0.0
+synopsis: Modular neural network as a circuits-ecosystem client
 description:
   A small neural-network library rebuilt on the circuits ecosystem:
   circuits-mat for linear algebra, circuits-diff for reverse-mode gradients,
   circuits-learn for optimiser processes, and Circuit.Poly for the
   coalgebra view of training.
 
-license:            BSD-3-Clause
-author:             tonyday567
-maintainer:         tonyday567@gmail.com
-category:           Machine Learning
-build-type:         Simple
+license: BSD-3-Clause
+author: tonyday567
+maintainer: tonyday567@gmail.com
+category: Machine Learning
+build-type: Simple
 
 common warnings
   ghc-options:
@@ -23,11 +23,12 @@ common warnings
     -Wredundant-constraints
 
 library
-  import:           warnings
+  import: warnings
   exposed-modules:
     Net
     NetCoalgebra
-  hs-source-dirs:   src
+
+  hs-source-dirs: src
   default-language: GHC2024
   build-depends:
     base >=4.18 && <5,
@@ -39,9 +40,10 @@ library
     numhask >=0.14 && <0.15,
     these,
     vector >=0.12 && <0.14,
+
   default-extensions:
-    GADTs
     DataKinds
+    GADTs
     RankNTypes
     ScopedTypeVariables
     TypeFamilies
@@ -49,10 +51,10 @@ library
     UnicodeSyntax
 
 test-suite oracle
-  import:           warnings
-  type:             exitcode-stdio-1.0
-  main-is:          Oracle.hs
-  hs-source-dirs:   test
+  import: warnings
+  type: exitcode-stdio-1.0
+  main-is: Oracle.hs
+  hs-source-dirs: test
   default-language: GHC2024
   build-depends:
     base >=4.18 && <5,
