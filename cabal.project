@@ -4,10 +4,13 @@ packages:
   ../circuits-learn/circuits-learn.cabal
   ../circuits-diff/circuits-diff.cabal
   ../circuits-mat/circuits-mat.cabal
-  ../string-diagrams/string-diagrams.cabal
-  ../harpie/harpie.cabal
-  ../numhask/numhask.cabal
-  ../circuits-diff/circuits-diff.cabal
+  ../circuits-diagrams/circuits-diagrams.cabal
   ../circuits-stats/circuits-stats.cabal
+  ../chart-svg/chart-svg.cabal
+  ../formatn/formatn.cabal
+  ../harpie/harpie.cabal
+  ../markup-parse/markup-parse.cabal
+  ../numhask/numhask.cabal
+  ../numhask-space/numhask-space.cabal
 
 write-ghc-environment-files: always
