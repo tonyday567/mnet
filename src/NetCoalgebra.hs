@@ -1,5 +1,6 @@
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE GADTs #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE UnicodeSyntax #-}
 {-# LANGUAGE NoImplicitPrelude #-}
@@ -101,7 +102,7 @@ transposeMatrix (Matrix a) =
       Matrix
         ( A.tabulate
             [c, r]
-            ( \ij -> case ij of
+            ( \case
                 [i, j] -> a A.! [j, i]
                 _ -> error "transposeMatrix: expected 2-element index"
             )

@@ -50,19 +50,13 @@ library
     TypeOperators
     UnicodeSyntax
 
-test-suite oracle
+executable mnet-axioma
   import: warnings
-  type: exitcode-stdio-1.0
-  main-is: Oracle.hs
-  hs-source-dirs: test
+  hs-source-dirs: app
+  main-is: axioma.hs
   default-language: GHC2024
   build-depends:
     base >=4.18 && <5,
-    circuits,
-    circuits-diff,
     circuits-mat,
     harpie >=0.3 && <0.4,
     mnet,
-    numhask >=0.14 && <0.15,
-    these,
-    vector >=0.12 && <0.14,

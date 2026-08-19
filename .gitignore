@@ -1,6 +1,5 @@
 dist/
 dist-newstyle/
-cabal.project.local*
 *.swp
 *.swo
 *~
@@ -12,4 +11,3 @@ cabal.project.local*
 *.dyn_o
 .hie/
 .stack-work/
-/cabal.project.local*
