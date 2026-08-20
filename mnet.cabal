@@ -31,7 +31,7 @@ library
   hs-source-dirs: src
   default-language: GHC2024
   build-depends:
-    base >=4.18 && <5,
+    base >=4.20 && <5,
     circuits,
     circuits-diff,
     circuits-learn,
@@ -56,7 +56,7 @@ executable mnet-axioma
   main-is: axioma.hs
   default-language: GHC2024
   build-depends:
-    base >=4.18 && <5,
+    base >=4.20 && <5,
     circuits-mat,
     harpie >=0.3 && <0.4,
     mnet,
