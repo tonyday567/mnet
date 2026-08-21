@@ -1,60 +1,65 @@
 cabal-version: 3.0
 name: mnet
 version: 0.1.0.0
+license: BSD-3-Clause
+license-file: LICENSE
+copyright: Tony Day (c) 2026
+category: Machine Learning
+author: Tony Day
+maintainer: tonyday567@gmail.com
+homepage: https://github.com/tonyday567/mnet#readme
+bug-reports: https://github.com/tonyday567/mnet/issues
 synopsis: Modular neural network as a circuits-ecosystem client
 description:
   A small neural-network library rebuilt on the circuits ecosystem:
   circuits-mat for linear algebra, circuits-diff for reverse-mode gradients,
   circuits-learn for optimiser processes, and Circuit.Poly for the
   coalgebra view of training.
-
-license: BSD-3-Clause
-author: tonyday567
-maintainer: tonyday567@gmail.com
-category: Machine Learning
 build-type: Simple
+tested-with:
+  ghc ==9.10.1
+  ghc ==9.12.2
+  ghc ==9.14.1
 
-common warnings
+source-repository head
+  type: git
+  location: https://github.com/tonyday567/mnet
+
+common ghc-options-stanza
   ghc-options:
     -Wall
+    -Wno-unused-imports
     -Wcompat
+    -Widentities
     -Wincomplete-record-updates
     -Wincomplete-uni-patterns
+    -Wpartial-fields
     -Wredundant-constraints
 
 library
-  import: warnings
+  import: ghc-options-stanza
+  default-language: GHC2024
+  hs-source-dirs: src
   exposed-modules:
     Net
     NetCoalgebra
 
-  hs-source-dirs: src
-  default-language: GHC2024
   build-depends:
     base >=4.20 && <5,
-    circuits,
-    circuits-diff,
-    circuits-learn,
-    circuits-mat,
+    circuits >=0.3 && <0.4,
+    circuits-diff >=0.1 && <0.2,
+    circuits-learn >=0.1 && <0.2,
+    circuits-mat >=0.1 && <0.2,
     harpie >=0.3 && <0.4,
     numhask >=0.14 && <0.15,
-    these,
+    these >=1.1 && <1.3,
     vector >=0.12 && <0.14,
 
-  default-extensions:
-    DataKinds
-    GADTs
-    RankNTypes
-    ScopedTypeVariables
-    TypeFamilies
-    TypeOperators
-    UnicodeSyntax
-
 executable mnet-axioma
-  import: warnings
+  import: ghc-options-stanza
+  default-language: GHC2024
   hs-source-dirs: app
   main-is: axioma.hs
-  default-language: GHC2024
   build-depends:
     base >=4.20 && <5,
     circuits-mat,
