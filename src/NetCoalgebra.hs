@@ -11,7 +11,7 @@
 -- * Linear maps use 'Circuit.Mat.Dense'.
 -- * Gradients are produced via 'Circuit.Diff.Param.DiffP' (reverse mode).
 -- * Parameter updates run through 'Circuit.Learn.Ephemeral.sgd' 'Progress'.
--- * The whole training step is packaged as a 'Circuit.ChannelPoly.Coalgebra'
+-- * The whole training step is packaged as a 'Circuit.System.Coalgebra'
 --   whose output direction is a learning-rate scalar.
 --
 -- A 'These'-based boundary type is provided for future batch scheduling;
@@ -47,7 +47,7 @@ module NetCoalgebra
   )
 where
 
-import Circuit.ChannelPoly (Coalgebra (..))
+import Circuit.System (Coalgebra (..))
 import Circuit.Diff.Param (DiffP (..), runDiffP)
 import Circuit.Learn.Ephemeral (Progress (..), sgd)
 import Circuit.Mat.Dense (Matrix (..), matTimes, matVec)

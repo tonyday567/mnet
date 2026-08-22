@@ -5,7 +5,7 @@
 --   1. Identity-training oracle: a 2-layer MLP trained on the identity
 --      mapping must decrease loss.
 --   2. Coalgebra oracle: the same training loop expressed as a
---      'Circuit.ChannelPoly.Coalgebra' must also decrease loss.
+--      'Circuit.System.Coalgebra' must also decrease loss.
 --   3. Gradient oracle: gradients produced by 'circuits-ad' via 'DiffP'
 --      must agree with hand-rolled reference gradients on a fixed input.
 module Main where
