@@ -47,11 +47,11 @@ module NetCoalgebra
   )
 where
 
-import Circuit.System (Coalgebra (..))
 import Circuit.Diff.Param (DiffP (..), runDiffP)
 import Circuit.Learn.Ephemeral (Progress (..), sgd)
 import Circuit.Mat.Dense (Matrix (..), matTimes, matVec)
 import Circuit.Poly (Eval (..), Mono, lens)
+import Circuit.System (Coalgebra (..))
 import Data.Vector.Unboxed qualified as VU
 import Harpie.Array (Array, arrayAs)
 import Harpie.Array qualified as A

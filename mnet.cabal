@@ -15,6 +15,7 @@ description:
   circuits-mat for linear algebra, circuits-diff for reverse-mode gradients,
   circuits-learn for optimiser processes, and Circuit.Poly for the
   coalgebra view of training.
+
 build-type: Simple
 tested-with:
   ghc ==9.10.1
